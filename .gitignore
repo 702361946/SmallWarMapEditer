@@ -1,0 +1,13 @@
+.idea/
+.mypy_cache/
+*/temp/
+*.egg-info/
+__pycache__/
+dist/
+log/
+build/
+
+temp.*
+
+.editorconfig
+mypy.ini

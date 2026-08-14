@@ -1,0 +1,40 @@
+# python -m build
+[project]
+name = "702361946_GameMod_SmallWar" # package name
+description = "由702361946开发的用于游戏SmallWar的Mod" # package info
+version = "0.0.1" # package version
+dependencies = [] # 依赖项
+requires-python = ">= 3.12" # python version
+readme = "README.md"  # README file
+license = "GPLv2" # LICENSE type
+license-files = ["LICENSE"]  # LICENSE file path
+# all developer
+authors = [
+    # {name (and email)}
+    {name = "702361946", email = "702361946@QQ.com"}
+]
+
+# name_url
+[project.urls]
+#github = "https://github.com/702361946/702361946_GameMod_SmallWar"
+
+[project.optional-dependencies]
+"map_editor_server" = ["fastapi >= 0.141.0", "uvicorn >= 0.52.0"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = [
+    "map_editor_html",
+    "map_editor_server"
+]
+include-package-data = true
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.package-data]
+
+[tool.setuptools.exclude-package-data]
