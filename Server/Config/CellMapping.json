@@ -1,0 +1,194 @@
+{
+    "浅水": {
+        "id": 0,
+        "name": "Water",
+        "groundType": 1,
+        "money": false,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "深水": {
+        "id": 1,
+        "name": "Water",
+        "groundType": 1,
+        "money": false,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "草原矿坑": {
+        "id": 2,
+        "name": "Mine",
+        "groundType": 0,
+        "money": true,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "雪地矿坑": {
+        "id": 3,
+        "name": "Mine",
+        "groundType": 0,
+        "money": true,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "沙地矿坑": {
+        "id": 4,
+        "name": "Mine",
+        "groundType": 0,
+        "money": true,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "草原": {
+        "id": 10,
+        "name": "Grass",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "灌木草原": {
+        "id": 11,
+        "name": "Grass",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "树林": {
+        "id": 12,
+        "name": "Tree",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.5,
+        "notBuilding": false
+    },
+    "高大树林": {
+        "id": 13,
+        "name": "Tree",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.5,
+        "notBuilding": false
+    },
+    "草原丘陵": {
+        "id": 14,
+        "name": "Hilly",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 2.0,
+        "notBuilding": true
+    },
+    "长草的草原丘陵": {
+        "id": 15,
+        "name": "Hilly",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 2.0,
+        "notBuilding": true
+    },
+    "山脉": {
+        "id": 16,
+        "name": "Mountains",
+        "groundType": 2,
+        "money": false,
+        "moveCost": 10.0,
+        "notBuilding": true
+    },
+    "雪地": {
+        "id": 20,
+        "name": "Snow",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "灌木雪地": {
+        "id": 21,
+        "name": "Snow",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "雪地树林": {
+        "id": 22,
+        "name": "Tree",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.5,
+        "notBuilding": false
+    },
+    "雪地丘陵": {
+        "id": 23,
+        "name": "Hilly",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 2.0,
+        "notBuilding": true
+    },
+    "长草的雪地丘陵": {
+        "id": 24,
+        "name": "Hilly",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 2.0,
+        "notBuilding": true
+    },
+    "浮冰": {
+        "id": 25,
+        "name": "Ice",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 10.0,
+        "notBuilding": true
+    },
+    "沙地": {
+        "id": 30,
+        "name": "Sand",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "流沙地": {
+        "id": 31,
+        "name": "Sand",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "沙地丘陵": {
+        "id": 32,
+        "name": "Hilly",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 2.0,
+        "notBuilding": true
+    },
+    "高山": {
+        "id": 33,
+        "name": "Mountains",
+        "groundType": 2,
+        "money": false,
+        "moveCost": 10.0,
+        "notBuilding": true
+    },
+    "绿洲": {
+        "id": 34,
+        "name": "Oasis",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.0,
+        "notBuilding": false
+    },
+    "长草沙地": {
+        "id": 35,
+        "name": "Sand",
+        "groundType": 0,
+        "money": false,
+        "moveCost": 1.0,
+        "notBuilding": false
+    }
+}
