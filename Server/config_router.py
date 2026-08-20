@@ -10,7 +10,7 @@
 
 from fastapi import APIRouter, HTTPException
 
-from ..config import GameParameter
+from config import GameParameter
 
 router = APIRouter(tags=["config"])
 

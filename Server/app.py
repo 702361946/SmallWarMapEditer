@@ -14,8 +14,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
 
-from routes import router as config_router
-from Server.routes.image_routes import router as image_router
+from config_router import router as config_router
+from image_router import router as image_router
 
 # ── FastAPI 应用 ──
 app = FastAPI(

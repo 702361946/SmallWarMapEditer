@@ -12,9 +12,9 @@ from io import BytesIO
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import Response
 
-from ..file_processing import ImageProcessor, PathData
+from file_processing import ImageProcessor, PathData
 
-ImageProcessor(PathData)
+# ImageProcessor(PathData)
 
 router = APIRouter(tags=["Image"])
 

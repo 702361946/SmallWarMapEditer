@@ -39,17 +39,6 @@
   align-items: center;
 }
 
-.cell_grid_button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.cell_grid_button.active {
-  background: rgba(56, 189, 248, 0.15);
-  border-color: #38bdf8;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
-}
-
 .cell_grid_button img {
   width: 32px;
   height: 48px;
@@ -63,6 +52,17 @@
   font-size: 12px;
   margin-top: 6px;
   text-align: center;
+}
+
+.cell_grid_button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cell_grid_button.active {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
 }
 
 .cell_grid_button.active span {
