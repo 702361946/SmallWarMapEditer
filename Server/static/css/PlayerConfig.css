@@ -1,0 +1,104 @@
+/*
+ * Copyright (c) 2026.
+ * @702361946
+ * 702361946@qq.com
+ * https://github.com/702361946
+ */
+
+.player_config {
+    background: #0000ff;
+    max-height: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.player_config_title {
+    color: #ff0000;
+    font-size: 14px;
+}
+
+.player_config_list {
+    max-height: 300px;
+    overflow: scroll;
+    display: table-row;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+}
+
+.player_config_tab {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: left; /* 水平靠左 */
+    padding: 8px 0;
+    border-bottom: 1px solid #1a4a7a;
+    font-size: 11px;
+    color: #888;
+}
+
+.player-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(26, 74, 122, 0.3);
+    font-size: 12px;
+    transition: background 0.15s;
+}
+
+.player-row:last-child {
+    border-bottom: none;
+}
+
+.player-row:hover {
+    background: #0f3460;
+}
+
+/* 四列布局: 20% 20% 20% 40% */
+.player-row .col-id {
+    width: 20%;
+    font-weight: 600;
+    color: #e8e8e8;
+}
+
+.player-row .col-team {
+    width: 20%;
+    color: #888;
+}
+
+.player-row .col-color {
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.player-row .col-style {
+    width: 40%;
+    color: #e8e8e8;
+}
+
+/* 颜色指示点 */
+.color-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.color-random {
+    background: repeating-conic-gradient(
+            from 0deg,
+            #e94560 0deg 60deg,
+            #fbbf24 60deg 120deg,
+            #4ade80 120deg 180deg,
+            #38bdf8 180deg 240deg,
+            #a78bfa 240deg 300deg,
+            #f472b6 300deg 360deg
+    );
+}
+
+/* 空状态 */
+.empty {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+    padding: 20px;
+}
