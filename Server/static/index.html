@@ -14,44 +14,55 @@
     <link rel="stylesheet" href="css/Cell.css">
     <link rel="stylesheet" href="css/PlayerConfig.css">
 </head>
-<body class="body">
-<!-- 左侧工具栏 -->
-<div class="l_tool">
-    <!-- 地块选择刷 -->
-    <div class="cell">
-        <span class="cell_title">地块选项</span>
-        <!-- 地块容器 -->
-        <div class="cell_grid_div" id="cell_grid_div">
-            <!-- 在此插入button -->
-<!--            <button class="cell_grid_button">-->
-<!--                <img src="" class="cell_grid_button" alt="ERROR">-->
-<!--                <span class="cell_grid_button">None</span>-->
-<!--            </button>-->
-        </div>
-        <script src="js/Cell.js"></script>
-        <script>
-            loadCellList()
-        </script>
-    </div>
-
-    <!-- 玩家列表 -->
-    <div class="player_config">
-        <span class="player_config_title">玩家设置</span>
-        <div class="player_config_list" id="playerList">
-            <!-- 标题 -->
-            <div class="player_config_tab">
-                <span style="width: 20%">ID</span>
-                <span style="width: 20%">队伍</span>
-                <span style="width: 20%">颜色</span>
-                <span style="width: 40%">风格</span>
+<body style="background: #121212;">
+    <!-- 左侧工具栏 -->
+    <div class="l_tool">
+        <!-- 地块选择刷 -->
+        <div class="cell">
+            <span class="cell_title">地块选项</span>
+            <!-- 地块容器 -->
+            <div class="cell_grid_div" id="cell_grid_div">
+                <!-- 在此插入button -->
+    <!--            <button class="cell_grid_button">-->
+    <!--                <img src="" class="cell_grid_button" alt="ERROR">-->
+    <!--                <span class="cell_grid_button">None</span>-->
+    <!--            </button>-->
             </div>
-            <!-- 在此插入玩家配置 -->
+            <script src="js/Cell.js"></script>
+            <script>
+                loadCellList()
+            </script>
         </div>
-        <script src="js/PlayerConfig.js"></script>
-        <script>
-            renderPlayerList()
-        </script>
+
+        <!-- 玩家列表 -->
+        <div class="player_config" id="player_config">
+            <div style="display: flex">
+                <span class="player_config_title">玩家设置</span>
+                <!-- 设置button -->
+                <div style="margin-left: auto;">
+                    <button onclick="add_player()">
+                        <span>添加玩家</span>
+                    </button>
+                    <button onclick="remove_player()">
+                        <span>移除玩家</span>
+                    </button>
+                </div>
+            </div>
+            <div id="player_list" style="display: flex; flex-direction: column; overflow-y: auto">
+                <!-- 标题 -->
+                <div class="player_config_tab">
+                    <span style="width: 20%">ID</span>
+                    <span style="width: 20%">队伍</span>
+                    <span style="width: 20%">颜色</span>
+                    <span style="width: 40%">风格</span>
+                </div>
+                <!-- 在此插入玩家配置 -->
+            </div>
+            <script src="js/PlayerConfig.js"></script>
+            <script>
+                add_player()
+            </script>
+        </div>
     </div>
-</div>
 </body>
 </html>
