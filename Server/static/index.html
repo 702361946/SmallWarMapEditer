@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/Cell.css">
     <link rel="stylesheet" href="css/PlayerConfig.css">
+    <link rel="stylesheet" href="css/MapEditor.css">
 </head>
-<body style="background: #121212;">
+<body style="background: #121212; display: flex">
     <!-- 左侧工具栏 -->
     <div class="l_tool">
         <!-- 地块选择刷 -->
@@ -63,6 +64,19 @@
                 add_player()
             </script>
         </div>
+    </div>
+
+    <!-- 地图编辑区域 -->
+    <div class="map_editor">
+        <!-- 网格部分 -->
+        <div class="map_editor_hex_map" id="map_editor_hex_map_div">
+            <!-- 插入网格内容 -->
+            <!-- 嵌入svg后, cell类为map_editor_hex_cell -->
+        </div>
+        <script src="js/MapEditor.js"></script>
+        <script>
+            buildHexMap(3, 3, 32, 32)
+        </script>
     </div>
 </body>
 </html>

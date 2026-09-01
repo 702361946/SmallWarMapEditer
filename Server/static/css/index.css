@@ -13,3 +13,9 @@
   display: flex;
   flex-direction: column;
 }
+
+/* 地图编辑器区 */
+.map_editor {
+    height: 100vh;
+    width: 75vw;
+}
