@@ -6,7 +6,16 @@
  */
 
 .map_editor_hex_map {
+    /* 占用父容器中剩余的所有空间 */
+    flex: 1;
+    min-width: 0;
+    min-height: 0; /* 防止内容溢出时撑破布局 */
 
+    /* 居中放置内部元素 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto
 }
 
 .map_editor_hex_cell {
