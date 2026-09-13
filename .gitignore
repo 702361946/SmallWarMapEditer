@@ -11,3 +11,6 @@ temp.*
 
 .editorconfig
 mypy.ini
+
+/.codex/
+Docs/AI/
