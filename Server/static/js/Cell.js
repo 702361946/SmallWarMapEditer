@@ -5,12 +5,18 @@
  * https://github.com/702361946
  */
 
+let on_cell_id = 0
+/**
+ *
+ * @type {number[]}
+ */
+let all_cell_id = []
+let cellGridDiv = document.getElementById('cell_grid_div');
+
 /**
  * 加载 Cell 列表并渲染到页面
  */
 async function loadCellList() {
-    const cellGridDiv = document.getElementById('cell_grid_div');
-
     try {
         // 请求 CellMapping 配置
         const response = await fetch('/Game/SmallWar/MapEditor/Config/CellMapping');
@@ -27,6 +33,7 @@ async function loadCellList() {
 
         // 遍历所有 Cell 数据
         for (const [cellName, cellData] of Object.entries(cellMapping)) {
+            all_cell_id.push(cellData.id)
             const button = createCellButton(cellName, cellData);
             cellGridDiv.appendChild(button);
         }
@@ -55,7 +62,7 @@ function createCellButton(cellName, cellData) {
     img.alt = cellName;
 
     // 图片加载失败时的处理
-    img.onerror = function() {
+    img.onerror = () => {
         img.src = ''; // 可以设置一个默认占位图
         img.alt = '图片加载失败';
     };
@@ -70,8 +77,9 @@ function createCellButton(cellName, cellData) {
     button.appendChild(span);
 
     // 点击事件
-    button.addEventListener('click', function() {
+    button.addEventListener('click', () => {
         onCellSelected(cellName, cellData);
+        button.style.background = "#FFFF00"
     });
 
     return button;
@@ -84,8 +92,8 @@ function createCellButton(cellName, cellData) {
  */
 function onCellSelected(cellName, cellData) {
     console.log('选中地块:', cellName, cellData);
-    // 这里可以添加选中后的逻辑，例如：
-    // - 高亮显示
-    // - 触发其他事件
-    // - 保存选中状态
+    on_cell_id = cellData.id;
+    for (let i of cellGridDiv.children) {
+        i.style.backgroundColor = '';
+    }
 }
