@@ -9,6 +9,11 @@ Python 3.12+ | FastAPI
   xxx.com/Game/SmallWar/MapEditor              -> 前端入口 (HTML)
 """
 
+#  Copyright (c) 2026.
+#  @702361946
+#  702361946@qq.com
+#  https://github.com/702361946
+
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,6 +21,7 @@ from pathlib import Path
 
 from config_router import router as config_router
 from image_router import router as image_router
+from output_router import router as output_router
 
 # ── FastAPI 应用 ──
 app = FastAPI(
@@ -40,6 +46,9 @@ app.include_router(config_router, prefix="/Game/SmallWar/MapEditor/Config")
 
 # 图片服务: /Game/SmallWar/MapEditor/Image/*
 app.include_router(image_router, prefix="/Game/SmallWar/MapEditor/Image")
+
+# 地图输出: /Game/SmallWar/MapEditor/Output/*
+app.include_router(output_router, prefix="/Game/SmallWar/MapEditor/Output")
 
 # 静态文件: /Game/SmallWar/MapEditor/*
 BASE_DIR = Path(__file__).parent.resolve()
