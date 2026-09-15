@@ -64,31 +64,6 @@ class PlayerData {
     }
 
     /**
-     * 导出为后端 EasyPlayerData 结构
-     * @returns {Object}
-     */
-    toEasyPlayerData() {
-        if (!this.isActive) {
-            this.reset()
-        }
-        return {
-            playerNumber: this.playerNumber,
-            team: this.team,
-            techPoint: this.techPoint,
-            camp: this.camp,
-            unitPlayerNumber: this.unitPlayerNumber,
-            landUnits: [...this.landUnits],
-            skyUnits: [...this.skyUnits],
-            shipUnits: [...this.shipUnits],
-            lockTechs: [...this.lockTechs],
-            lockUnits: [...this.lockUnits],
-            lockUpgrade: [...this.lockUpgrade],
-            type: this.type,
-            color: this.color
-        };
-    }
-
-    /**
      * 重置为默认值
      */
     reset() {

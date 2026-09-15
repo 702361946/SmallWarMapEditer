@@ -75,7 +75,7 @@ class MapData(BaseModel):
     type: int = 1
     name: str = "unnamed"
     size: int = 0
-    humanPlayerNumber: int = 0
+    humanPlayerNumber: int = 1
     selectablePlayers: list[int] = []
     tileDataList: list[TileData] = []
     unitData: list[EasyUnitData] = []

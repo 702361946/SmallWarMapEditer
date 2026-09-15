@@ -12,7 +12,7 @@ const _hex_map_div = document.getElementById('map_editor_hex_map_div');
  * @type {CellItem[][]}
  * @private
  */
-let _hex_map = []
+var _hex_map = []
 
 /**
  *

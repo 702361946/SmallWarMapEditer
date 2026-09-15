@@ -1,0 +1,25 @@
+/*
+ * Copyright (c) 2026.
+ * @702361946
+ * 702361946@qq.com
+ * https://github.com/702361946
+ */
+
+.output_button_div {
+    left: 90%;
+    position: fixed;
+    width: 10%;
+    height: 5%;
+    min-width: 50px;
+    min-height: 25px;
+}
+
+.output_button_button {
+    width: 100%;
+    height: 100%;
+}
+
+.output_button_span {
+    width: 90%;
+    height: 90%;
+}

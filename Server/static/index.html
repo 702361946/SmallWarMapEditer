@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/Cell.css">
     <link rel="stylesheet" href="css/PlayerConfig.css">
     <link rel="stylesheet" href="css/MapEditor.css">
+    <link href="css/MapConfig.css" rel="stylesheet">
+    <link href="css/Output.css" rel="stylesheet">
 </head>
 <body style="background: #121212; display: flex">
 <script src="js/CellItem.js"></script>
@@ -79,5 +81,13 @@
             buildHexMap(30, 25, 32, 32)
         </script>
     </div>
+
+<!-- 导出按钮 -->
+<div class="output_button_div" id="output_button_div">
+    <script src="js/Output.js"></script>
+    <script>
+        build_output_all_button()
+    </script>
+</div>
 </body>
 </html>
