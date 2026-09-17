@@ -66,7 +66,7 @@ async function output(_type = "gmap") {
     })
 
     // 格式化
-    let _json = map_data_to_json(_map_data)
+    let _json = map_data_to_server_json(_map_data)
 
     // 送后端校验
     try {
@@ -77,13 +77,14 @@ async function output(_type = "gmap") {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(_json)
+                body: _json
             }
         );
 
         if (!response.ok) {
             return;
         }
+        _json = response.body
     } catch (e) {
         console.log(e)
     }
@@ -94,12 +95,20 @@ async function output(_type = "gmap") {
     output_download(blob, _type)
 }
 
+// /**
+//  *
+//  * @param {MapData} map_data
+//  */
+// function map_data_to_json(map_data) {
+//     return JSON.stringify(map_data.toJSON())
+// }
+
 /**
  *
  * @param {MapData} map_data
  */
-function map_data_to_json(map_data) {
-    return JSON.stringify(map_data.toJSON(), null, 4)
+function map_data_to_server_json(map_data) {
+    return JSON.stringify(map_data.toServerJson())
 }
 
 /**
@@ -130,12 +139,12 @@ function o_player_func(player_data) {
         techPoint: player_data.techPoint,
         camp: player_data.camp,
         unitPlayerNumber: player_data.unitPlayerNumber,
-        landUnits: [player_data.landUnits],
-        skyUnits: [player_data.skyUnits],
-        shipUnits: [player_data.shipUnits],
-        lockTechs: [player_data.lockTechs],
-        lockUnits: [player_data.lockUnits],
-        lockUpgrade: [player_data.lockUpgrade],
+        landUnits: player_data.landUnits,
+        skyUnits: player_data.skyUnits,
+        shipUnits: player_data.shipUnits,
+        lockTechs: player_data.lockTechs,
+        lockUnits: player_data.lockUnits,
+        lockUpgrade: player_data.lockUpgrade,
         type: player_data.type,
         color: player_data.color
     });
@@ -251,6 +260,37 @@ class EasyPlayerData {
             color: this.color
         }
     }
+
+    toServerJson() {
+        let t = {
+            playerNumber: this.playerNumber,
+            team: this.team,
+            techPoint: this.techPoint,
+            camp: this.camp,
+            unitPlayerNumber: this.unitPlayerNumber,
+            type: this.type,
+            color: this.color
+        }
+        if (this.landUnits.length !== 0) {
+            t.landUnits = this.landUnits
+        }
+        if (this.skyUnits.length !== 0) {
+            t.skyUnits = this.skyUnits
+        }
+        if (this.shipUnits.length !== 0) {
+            t.shipUnits = this.shipUnits
+        }
+        if (this.lockTechs.length !== 0) {
+            t.lockTechs = this.lockTechs
+        }
+        if (this.lockUnits.length !== 0) {
+            t.lockUnits = this.lockUnits
+        }
+        if (this.lockUpgrade.length !== 0) {
+            t.lockUpgrade = this.lockUpgrade
+        }
+        return t
+    }
 }
 
 class VictoryCondition {
@@ -309,6 +349,24 @@ class MapData {
             unitData: this.unitData.map(u => u.toJSON()),
             bothPlace: this.bothPlace.map(v => v.toJSON()),
             playerDatas: this.playerDatas.map(p => p.toJSON()),
+            victoryConditions: this.victoryConditions.map(v => v.toJSON()),
+            failureConditions: this.failureConditions.map(f => f.toJSON())
+        }
+    }
+
+    toServerJson() {
+        return {
+            width: this.width,
+            height: this.height,
+            type: this.type,
+            name: this.name,
+            size: this.size,
+            humanPlayerNumber: this.humanPlayerNumber,
+            selectablePlayers: this.selectablePlayers,
+            tileDataList: this.tileDataList.map(t => t.toJSON()),
+            unitData: this.unitData.map(u => u.toJSON()),
+            bothPlace: this.bothPlace.map(v => v.toJSON()),
+            playerDatas: this.playerDatas.map(p => p.toServerJson()),
             victoryConditions: this.victoryConditions.map(v => v.toJSON()),
             failureConditions: this.failureConditions.map(f => f.toJSON())
         }

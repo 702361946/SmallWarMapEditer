@@ -50,18 +50,23 @@ class EventItem(BaseModel):
 
 class EasyPlayerData(BaseModel):
     playerNumber: int
-    team: int = 0
-    techPoint: int = 0
-    camp: str = "US"
-    unitPlayerNumber: int = 0
-    landUnits: list[str] = []
-    skyUnits: list[str] = []
-    shipUnits: list[str] = []
-    lockTechs: list[str] = []
-    lockUnits: list[str] = []
-    lockUpgrade: list[str] = []
-    type: int = 0
-    color: int = 0
+    team: int = Field(default=0)
+    techPoint: int = Field(default=0)
+    camp: str = Field(default="US")
+    unitPlayerNumber: int = Field(default=0)
+    landUnits: list[str] = Field(default_factory=lambda: list())
+    skyUnits: list[str] = Field(default_factory=lambda: list())
+    shipUnits: list[str] = Field(default_factory=lambda: list())
+    lockTechs: list[str] = Field(default_factory=lambda: list())
+    lockUnits: list[str] = Field(default_factory=lambda: list())
+    lockUpgrade: list[str] = Field(default_factory=lambda: list())
+    type: int = Field(default=0)
+    color: int = Field(default=0)
+
+    @field_validator("landUnits")
+    @classmethod
+    def validate_land_units(cls, v):
+        return v
 
 class VictoryCondition(BaseModel):
     pass
@@ -75,12 +80,12 @@ class MapData(BaseModel):
     type: int = 1
     name: str = "unnamed"
     size: int = 0
+    playerDatas: list[EasyPlayerData]
     humanPlayerNumber: int = 1
     selectablePlayers: list[int] = []
     tileDataList: list[TileData] = []
     unitData: list[EasyUnitData] = []
     bothPlace: list[Vector2] = Field(default_factory=lambda: [Vector2(x=255, y=255)] * 9)
-    playerDatas: list[EasyPlayerData]
     # events: list[EventItem] # 暂不提供
     victoryConditions: list[VictoryCondition] = []
     failureConditions: list[FailureCondition] = []
