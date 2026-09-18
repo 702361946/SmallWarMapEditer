@@ -1,0 +1,43 @@
+/*
+ * Copyright (c) 2026.
+ * @702361946
+ * 702361946@qq.com
+ * https://github.com/702361946
+ */
+
+.map_config_div {
+    margin-top: auto;
+    background: chocolate;
+}
+
+.map_config_information_div {
+
+}
+
+.map_config_button_div {
+    display: flex;
+}
+
+.map_config_button_set_div {
+    display: flex;
+    max-width: 75%;
+}
+
+.map_config_button_set_button {
+    max-width: 50%;
+    display: flex;
+}
+
+.map_config_button_set_input_div {
+    display: flex;
+    max-width: 50%;
+}
+
+.map_config_button_set_input_input_div {
+    display: flex;
+    max-width: 50%;
+}
+
+.map_config_button_set_input_input {
+    max-width: 50%;
+}

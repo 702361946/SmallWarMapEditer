@@ -181,6 +181,8 @@ function set_map_svg(map_w, map_h, m_svg) {
  * @param {number} height 高度
  */
 function buildHexMap(q, r, width, height) {
+    // 重置容器
+    _hex_map_div.innerHTML = ""
     // 重置表格
     _hex_map = []
     for (let _r = 0; _r < r; _r++) {
@@ -276,6 +278,9 @@ function buildHexMap(q, r, width, height) {
     m_svg.append(svg)
 
     _hex_map_div.append(m_svg);
+
+    // 更新信息
+    updata_xy_info(q, r)
 }
 
 /**
