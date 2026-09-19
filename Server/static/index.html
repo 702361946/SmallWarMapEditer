@@ -11,30 +11,32 @@
     <meta charset="UTF-8">
     <title>SmallWar Game MapEditor</title>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/Cell.css">
     <link rel="stylesheet" href="css/PlayerConfig.css">
     <link rel="stylesheet" href="css/MapEditor.css">
     <link href="css/MapConfig.css" rel="stylesheet">
     <link href="css/Output.css" rel="stylesheet">
+    <link href="css/BrushOptions/BrushOptions.css" rel="stylesheet">
+    <link href="css/BrushOptions/BrushOptionsTable.css" rel="stylesheet">
 </head>
 <body style="background: #121212; display: flex">
+<script src="js/BrushOptions/BrushOptionsCell.js"></script>
 <script src="js/CellItem.js"></script>
     <!-- 左侧工具栏 -->
     <div class="l_tool">
         <!-- 地块选择刷 -->
-        <div class="cell">
-            <span class="cell_title">地块选项</span>
-            <!-- 地块容器 -->
-            <div class="cell_grid_div" id="cell_grid_div">
-                <!-- 在此插入button -->
-    <!--            <button class="cell_grid_button">-->
-    <!--                <img src="" class="cell_grid_button" alt="ERROR">-->
-    <!--                <span class="cell_grid_button">None</span>-->
-    <!--            </button>-->
+        <div class="brush_options">
+            <!-- 页面切换按钮容器 -->
+            <div class="brush_options_switch_div" id="brush_options_switch_div">
+                <!-- class is brush_options_switch_button -->
             </div>
-            <script src="js/Cell.js"></script>
+            <div class="brush_options_table_div" id="brush_options_table_div">
+                <!-- class is brush_options_table_grid -->
+            </div>
+            <script src="js/BrushOptions/BrushOptionsTable.js"></script>
+            <script src="js/BrushOptions/BrushOptions.js"></script>
             <script>
-                loadCellList()
+                b_o_build_all_switch_button()
+                b_o_c_load_cell_list()
             </script>
         </div>
 

@@ -304,3 +304,7 @@ function set_cell_image(cell_id, cell) {
     // console.log("debug", cell.dataset.x, cell.dataset.y)
     _hex_map[Number(cell.dataset.y)][Number(cell.dataset.x)].cell_id = cell_id
 }
+
+function up_map_editor_image(img, to_img) {
+
+}
