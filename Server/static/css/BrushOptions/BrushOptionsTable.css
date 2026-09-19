@@ -1,0 +1,56 @@
+/*
+ * Copyright (c) 2026.
+ * @702361946
+ * 702361946@qq.com
+ * https://github.com/702361946
+ */
+
+.brush_options_table_div {
+    max-height: 90%;
+    overflow: auto;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+}
+
+.brush_options_table_grid_button {
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.brush_options_table_grid_img {
+    width: 32px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+    image-rendering: pixelated;
+}
+
+.brush_options_table_grid_span {
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 6px;
+    text-align: center;
+}
+
+.brush_options_table_grid_button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.brush_options_table_grid_button.active {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: #38bdf8;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+}
+
+.brush_options_table_grid_button.active span {
+    color: #38bdf8;
+    font-weight: 600;
+}
