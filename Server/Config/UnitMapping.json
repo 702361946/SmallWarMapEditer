@@ -1,0 +1,522 @@
+{
+    "多功能防空车": {
+        "id": "AA",
+        "name": "多功能防空车",
+        "description": "对空载具",
+        "requickTech": "",
+        "buildMoneyCost": 60,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "两栖防空车": {
+        "id": "AAA",
+        "name": "两栖防空车",
+        "description": "两栖防空车，对空高射炮能产生溅射",
+        "requickTech": "",
+        "buildMoneyCost": 80,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "防空导弹": {
+        "id": "AAM",
+        "name": "防空导弹",
+        "description": "防空导弹",
+        "requickTech": "MINE",
+        "buildMoneyCost": 150,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "护卫舰": {
+        "id": "AAS",
+        "name": "",
+        "description": "空中对地单位",
+        "requickTech": "",
+        "buildMoneyCost": 90,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "武装直升机": {
+        "id": "AH",
+        "name": "武装直升机",
+        "description": "空中对地单位",
+        "requickTech": "",
+        "buildMoneyCost": 100,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "防空机甲": {
+        "id": "AMECH",
+        "name": "防空机甲",
+        "description": "中型机甲",
+        "requickTech": "SC",
+        "buildMoneyCost": 140,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "两栖战舰": {
+        "id": "ASHIP",
+        "name": "两栖战舰",
+        "description": "海上战舰",
+        "requickTech": "SC",
+        "buildMoneyCost": 180,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "两栖坦克": {
+        "id": "ATANK",
+        "name": "两栖坦克",
+        "description": "两栖坦克",
+        "requickTech": "",
+        "buildMoneyCost": 80,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "基地": {
+        "id": "BASE",
+        "name": "基地",
+        "description": "",
+        "requickTech": "",
+        "buildMoneyCost": 1000,
+        "buildTimeCost": 0,
+        "addTech": null,
+        "HIDE": false
+    },
+    "战斗机甲": {
+        "id": "BMECH",
+        "name": "战斗机甲",
+        "description": "中型机甲",
+        "requickTech": "SC",
+        "buildMoneyCost": 130,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "轰炸机": {
+        "id": "BOMBER",
+        "name": "",
+        "description": "空中对地单位",
+        "requickTech": "LAB",
+        "buildMoneyCost": 300,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "自爆卡车": {
+        "id": "BOOM",
+        "name": "自爆卡车",
+        "description": "",
+        "requickTech": "",
+        "buildMoneyCost": 150,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "起重机": {
+        "id": "BUILDER",
+        "name": "起重机",
+        "description": "建造建筑",
+        "requickTech": "MINE",
+        "buildMoneyCost": 150,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "大炮": {
+        "id": "CANNON",
+        "name": "大炮",
+        "description": "大炮",
+        "requickTech": "MINE",
+        "buildMoneyCost": 150,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "充能激光车": {
+        "id": "CHARGELASER",
+        "name": "充能激光车",
+        "description": "火箭发射车",
+        "requickTech": "LAB",
+        "buildMoneyCost": 250,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "挖沟机": {
+        "id": "CUTTER",
+        "name": "挖沟机",
+        "description": "11",
+        "requickTech": "",
+        "buildMoneyCost": 100,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "工厂": {
+        "id": "FACT_T2",
+        "name": "工厂",
+        "description": "",
+        "requickTech": "",
+        "buildMoneyCost": 200,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "飞龙": {
+        "id": "FD",
+        "name": "飞龙",
+        "description": "空中放火",
+        "requickTech": "LAB",
+        "buildMoneyCost": 250,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "精英战斗机": {
+        "id": "FIGHT",
+        "name": "精英战斗机",
+        "description": "重型对空战机",
+        "requickTech": "SC",
+        "buildMoneyCost": 120,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "火焰坦克": {
+        "id": "FTANK",
+        "name": "火焰坦克",
+        "description": "111",
+        "requickTech": "",
+        "buildMoneyCost": 90,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "海上战舰": {
+        "id": "GB",
+        "name": "",
+        "description": "海上战舰",
+        "requickTech": "",
+        "buildMoneyCost": 100,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "巨炮": {
+        "id": "GCANNON",
+        "name": "巨炮",
+        "description": "巨型防御型建筑，远程轰炸",
+        "requickTech": "LAB",
+        "buildMoneyCost": 300,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "火神": {
+        "id": "GF",
+        "name": "火神",
+        "description": "大范围对地点火",
+        "requickTech": "SC",
+        "buildMoneyCost": 200,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "重型坦克": {
+        "id": "HTANK",
+        "name": "重型坦克",
+        "description": "先进对地坦克",
+        "requickTech": "LAB",
+        "buildMoneyCost": 200,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "冷冻直升机": {
+        "id": "IC",
+        "name": "冷冻直升机",
+        "description": "空中对地单位",
+        "requickTech": "SC",
+        "buildMoneyCost": 130,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "冰龙": {
+        "id": "ICED",
+        "name": "冰龙",
+        "description": "大范围对地冰冻",
+        "requickTech": "SC",
+        "buildMoneyCost": 200,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "抛冰机": {
+        "id": "IS",
+        "name": "抛冰机",
+        "description": "大范围对地冻结",
+        "requickTech": "",
+        "buildMoneyCost": 100,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "科技研究所": {
+        "id": "LAB",
+        "name": "科技研究所",
+        "description": "",
+        "requickTech": "SC",
+        "buildMoneyCost": 300,
+        "buildTimeCost": 3,
+        "addTech": null,
+        "HIDE": false
+    },
+    "光棱坦克": {
+        "id": "LTANK",
+        "name": "光棱坦克",
+        "description": "好人",
+        "requickTech": "SC",
+        "buildMoneyCost": 130,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "移动巨炮": {
+        "id": "MGC",
+        "name": "移动巨炮",
+        "description": "重型两栖载具，常态时无武装，可展开成巨炮",
+        "requickTech": "LAB",
+        "buildMoneyCost": 300,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": true
+    },
+    "矿井": {
+        "id": "MINE",
+        "name": "矿井",
+        "description": "",
+        "requickTech": "",
+        "buildMoneyCost": 200,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "矿井T2": {
+        "id": "MINE_T2",
+        "name": "矿井T2",
+        "description": "",
+        "requickTech": "",
+        "buildMoneyCost": 400,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "矿井T3": {
+        "id": "MINE_T3",
+        "name": "矿井T3",
+        "description": "",
+        "requickTech": "",
+        "buildMoneyCost": 600,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "洗脑战车": {
+        "id": "MM",
+        "name": "洗脑战车",
+        "description": "巨型防御型建筑，远程轰炸",
+        "requickTech": "LAB",
+        "buildMoneyCost": 120,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "首脑": {
+        "id": "MMH",
+        "name": "首脑",
+        "description": "空中对地单位",
+        "requickTech": "LAB",
+        "buildMoneyCost": 400,
+        "buildTimeCost": 4,
+        "addTech": null,
+        "HIDE": false
+    },
+    "轻型坦克": {
+        "id": "MTANK",
+        "name": "轻型坦克",
+        "description": "对地坦克",
+        "requickTech": "",
+        "buildMoneyCost": 70,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "核弹发射井": {
+        "id": "NUKE",
+        "name": "核弹发射井",
+        "description": "空中对地单位",
+        "requickTech": "LAB",
+        "buildMoneyCost": 1000,
+        "buildTimeCost": 5,
+        "addTech": null,
+        "HIDE": false
+    },
+    "核潜艇": {
+        "id": "NUSUB",
+        "name": "核潜艇",
+        "description": "空中对地单位",
+        "requickTech": "SC",
+        "buildMoneyCost": 300,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": true
+    },
+    "侦察车": {
+        "id": "OV",
+        "name": "",
+        "description": "基地扩张",
+        "requickTech": "",
+        "buildMoneyCost": 150,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "机场": {
+        "id": "PORT_T2",
+        "name": "机场",
+        "description": "",
+        "requickTech": "",
+        "buildMoneyCost": 200,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "前哨站": {
+        "id": "POST",
+        "name": "",
+        "description": "",
+        "requickTech": "SC",
+        "buildMoneyCost": 120,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "维修者": {
+        "id": "RE",
+        "name": "维修者",
+        "description": "专业维修车辆、船只",
+        "requickTech": "",
+        "buildMoneyCost": 70,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "维修直升机": {
+        "id": "REH",
+        "name": "维修直升机",
+        "description": "专业维修飞机、车辆、船只",
+        "requickTech": "SC",
+        "buildMoneyCost": 150,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "火箭发射车": {
+        "id": "ROCKC2",
+        "name": "火箭发射车",
+        "description": "火箭发射车",
+        "requickTech": "LAB",
+        "buildMoneyCost": 180,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": true
+    },
+    "无畏级战舰": {
+        "id": "ROCKS",
+        "name": "无畏级战舰",
+        "description": "无畏级战舰",
+        "requickTech": "LAB",
+        "buildMoneyCost": 250,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "飞弹战舰": {
+        "id": "RSHIP",
+        "name": "飞弹战舰",
+        "description": "海上战舰",
+        "requickTech": "SC",
+        "buildMoneyCost": 180,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": true
+    },
+    "军事学院": {
+        "id": "SC",
+        "name": "军事学院",
+        "description": "",
+        "requickTech": "MINE",
+        "buildMoneyCost": 200,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    },
+    "侦察机": {
+        "id": "SCOUT",
+        "name": "侦察机",
+        "description": "轻型侦查机，无武装",
+        "requickTech": "",
+        "buildMoneyCost": 50,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "自行火炮": {
+        "id": "SPG",
+        "name": "自行火炮",
+        "description": "中程火炮",
+        "requickTech": "",
+        "buildMoneyCost": 100,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "潜艇": {
+        "id": "SSK",
+        "name": "",
+        "description": "空中对地单位",
+        "requickTech": "SC",
+        "buildMoneyCost": 100,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": false
+    },
+    "飞碟": {
+        "id": "UFO",
+        "name": "飞碟",
+        "description": "",
+        "requickTech": "",
+        "buildMoneyCost": 300,
+        "buildTimeCost": 1,
+        "addTech": null,
+        "HIDE": true
+    },
+    "船坞": {
+        "id": "YARD_T2",
+        "name": "船坞",
+        "description": "",
+        "requickTech": "",
+        "buildMoneyCost": 200,
+        "buildTimeCost": 2,
+        "addTech": null,
+        "HIDE": false
+    }
+}
