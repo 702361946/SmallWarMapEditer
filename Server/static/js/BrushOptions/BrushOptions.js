@@ -102,6 +102,7 @@ function b_o_build_all_cell_grid() {
 }
 
 function b_o_build_all_unit_grid() {
+    b_o_u_load_unit_list().then()
 
 }
 
