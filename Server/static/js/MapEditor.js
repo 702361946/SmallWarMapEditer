@@ -225,38 +225,52 @@ function buildHexMap(q, r, width, height) {
             const points = _qr_to_svg_points(cx, cy, offsets);
 
             // 4. 插入 polygon
-            const cell = document.createElementNS(svgNs, 'polygon');
-            const img = document.createElementNS(svgNs, 'image');
+            const cell = document.createElementNS(svgNs, 'polygon')
+            const img_cell = document.createElementNS(svgNs, 'image')
+            const img_unit = document.createElementNS(svgNs, "image")
 
             cell.dataset.x = _q.toString()
             cell.dataset.y = _r.toString()
-            img.dataset.x = _q.toString()
-            img.dataset.y = _r.toString()
+            img_cell.dataset.x = _q.toString()
+            img_cell.dataset.y = _r.toString()
+            img_unit.dataset.x = _q.toString()
+            img_unit.dataset.y = _r.toString()
 
             cell.setAttribute('points', points);
             cell.setAttribute('class', 'map_editor_six_cell');
 
-            img.setAttribute('width', '32');
-            img.setAttribute('height', '48');
+            img_cell.setAttribute('width', '32');
+            img_cell.setAttribute('height', '48');
+            img_unit.setAttribute('width', '32')
+            img_unit.setAttribute('height', '32')
 
             // 让图片中心对准 cell 中心，y 多向上偏 8px（高出的部分）
-            img.setAttribute('x', (cx - 16).toString());
-            img.setAttribute('y', (cy - 32).toString());
+            img_cell.setAttribute('x', (cx - 16).toString());
+            img_cell.setAttribute('y', (cy - 32).toString());
+            img_unit.setAttribute('x', (cx - 16).toString());
+            img_unit.setAttribute('y', (cy - 16).toString());
 
-            set_cell_image(0, img)
+            set_cell_image(0, img_cell)
 
             svg.append(cell);
-            svg.append(img);  // image应在cell后绘制
-
-            // 写入表格
+            svg.append(img_cell);  // image应在cell后绘制
+            svg.append(img_unit)
 
             // 交互
             let r_f = () => {
-                console.log('点击了', _q, _r, img);
-                set_cell_image(on_cell_id, img)
+                console.log('点击了', _q, _r);
+                switch (b_o_on_brush) {
+                    case "cell":
+                        set_cell_image(on_cell_id, img_cell)
+                        break
+                    case "unit":
+                        set_unit_image(on_unit_id, img_unit)
+                        break
+                }
             }
             cell.addEventListener('click', r_f);
-            img.addEventListener('click', r_f)
+            img_cell.addEventListener('click', r_f)
+            img_unit.addEventListener('click', r_f)
         }
     }
 
@@ -305,6 +319,24 @@ function set_cell_image(cell_id, cell) {
     _hex_map[Number(cell.dataset.y)][Number(cell.dataset.x)].cell_id = cell_id
 }
 
-function up_map_editor_image(img, to_img) {
+/**
+ *
+ * @param {string} unit_id
+ * @param {SVGImageElement} unit_img
+ */
+function set_unit_image(unit_id, unit_img) {
+    unit_img.setAttribute(
+        'href',
+        `/Game/SmallWar/MapEditor/Image/unit/${encodeURIComponent(unit_id)}`
+    );
 
+    if (!"x" in unit_img.dataset) {
+        return
+    }
+    if (!"y" in unit_img.dataset) {
+        return
+    }
+
+    // console.log("debug", cell.dataset.x, cell.dataset.y)
+    _hex_map[Number(unit_img.dataset.y)][Number(unit_img.dataset.x)].unit_id = unit_id
 }
