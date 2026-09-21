@@ -76,13 +76,18 @@ class GameFixedParameter:
 
 class GameParameter(GameFixedParameter):
     cell_mapping: dict[str, str | int | float | bool]
+    unit_mapping: dict[str, str | int | float | bool]
 
     @classmethod
     def __init__(cls):
         cm = json.load("CellMapping")
+        um = json.load("UnitMapping")
         if not cm.ok:
             raise FileNotFoundError("Cell mapping file not found.")
+        if not um.ok:
+            raise FileNotFoundError("Unit mapping file not found.")
         cls.cell_mapping = cm.get()
+        cls.unit_mapping = um.get()
 
 GameParameter()
 
