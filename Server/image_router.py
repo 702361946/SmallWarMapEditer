@@ -20,9 +20,18 @@ router = APIRouter(tags=["Image"])
 
 
 @router.get("/cell/{cell_id}")
-def get_cell_image(cell_id: int):
+def get_cell_image(cell_id: str):
     """获取地形类型图标 PNG"""
     image = ImageProcessor.get_id_cell_image(cell_id)
+    buffer = BytesIO()
+    image.save(buffer, format="PNG")
+    buffer.seek(0)
+    return Response(content=buffer.getvalue(), media_type="image/png")
+
+
+@router.get("/unit/{unit_id}")
+def get_unit_image(unit_id: str):
+    image = ImageProcessor.get_id_unit_image(unit_id)
     buffer = BytesIO()
     image.save(buffer, format="PNG")
     buffer.seek(0)

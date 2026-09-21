@@ -15,6 +15,11 @@ class ImageProcessor:
         return Image.open(fp)
 
     @classmethod
-    def get_id_cell_image(cls, _id: int):
+    def get_id_cell_image(cls, _id: str):
         fp = PathData.cell_image_dir / "id" / f"{_id}.png"
+        return Image.open(fp)
+
+    @classmethod
+    def get_id_unit_image(cls, _id: str):
+        fp = PathData.unit_image_dir / "id" / f"{_id}.png"
         return Image.open(fp)

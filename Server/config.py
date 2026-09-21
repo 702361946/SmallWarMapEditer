@@ -3,6 +3,11 @@
 路径: Server/Config/
 """
 
+#  Copyright (c) 2026.
+#  @702361946
+#  702361946@qq.com
+#  https://github.com/702361946
+
 from pathlib import Path
 from file_processing import PathData
 from dependency.modules._file_operations import Json
@@ -23,7 +28,7 @@ PathConfig.init_mkdir()
 json = Json(file_save_path=str(PathConfig.config_dir))
 
 _p = PathConfig.base_dir / "Files" / "Image"
-PathData(image_dir = _p, cell_image_dir= _p / "Cell")
+PathData(image_dir=_p, cell_image_dir=_p / "Cell", unit_image_dir=_p / "Unit")
 
 
 # 固定参
