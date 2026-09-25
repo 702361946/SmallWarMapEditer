@@ -29,6 +29,16 @@ async function b_o_u_load_unit_list() {
 
         const unitMapping = await response.json();
 
+        // 构造清除按钮
+        const b = createUnitButton(
+            "clear",
+            {
+                id: ""
+            },
+            "/Game/SmallWar/MapEditor/Image/match/clear"
+        )
+        b_o_t_append_to_div(b)
+
         // 遍历所有 Unit 数据
         for (const [name, data] of Object.entries(unitMapping)) {
             all_unit_id.push(data.id)
@@ -48,12 +58,14 @@ async function b_o_u_load_unit_list() {
  * 创建单个 Cell 按钮
  * @param {string} unitName - 地块中文名称
  * @param {Object} unitData - 地块数据对象
+ * @param {string} img_url
  * @returns {HTMLButtonElement} 按钮元素
  */
-function createUnitButton(unitName, unitData) {
+function createUnitButton(unitName, unitData, img_url = "") {
     let _title = `${unitName} (ID: ${unitData.id})`
-    let img_url = `/Game/SmallWar/MapEditor/Image/unit/${unitData.id}`
-
+    if (img_url === "") {
+        img_url = `/Game/SmallWar/MapEditor/Image/unit/${unitData.id}`
+    }
     return b_o_t_get_grid_block(
         img_url,
         unitName,

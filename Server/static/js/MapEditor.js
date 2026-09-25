@@ -325,10 +325,14 @@ function set_cell_image(cell_id, cell) {
  * @param {SVGImageElement} unit_img
  */
 function set_unit_image(unit_id, unit_img) {
-    unit_img.setAttribute(
-        'href',
-        `/Game/SmallWar/MapEditor/Image/unit/${encodeURIComponent(unit_id)}`
-    );
+    if (unit_id === "") {
+        unit_img.removeAttribute("href")
+    } else {
+        unit_img.setAttribute(
+            'href',
+            `/Game/SmallWar/MapEditor/Image/unit/${encodeURIComponent(unit_id)}`
+        )
+    }
 
     if (!"x" in unit_img.dataset) {
         return
