@@ -37,16 +37,18 @@ class TileData(BaseModel):
     burning: bool = False
     burningTime: int = 0
 
+
 class EasyUnitData(BaseModel):
     pos: Vector2
     PlayerNumber: int
     unitName: str = "BASE"  # unit id
     tag: str = ""
-    # command: object = None # 暂时不提供
+    command: object = Field(default={"type": 0, "pos": {"x": 0.0, "y": 0.0}, "tag": ""})
 
 
 class EventItem(BaseModel):
     pass
+
 
 class EasyPlayerData(BaseModel):
     playerNumber: int
@@ -68,11 +70,14 @@ class EasyPlayerData(BaseModel):
     def validate_land_units(cls, v):
         return v
 
+
 class VictoryCondition(BaseModel):
     pass
 
+
 class FailureCondition(BaseModel):
     pass
+
 
 class MapData(BaseModel):
     width: int = 21

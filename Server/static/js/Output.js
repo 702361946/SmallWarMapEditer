@@ -43,15 +43,23 @@ async function output(_type = "gmap") {
 
     // 格子部分
     let o_map_editor_cell_data = []
+    let o_map_editor_unit_data = []
     let w = _hex_map.length
     if (w === 0) {
         // 检查内容
         return
     }
     let h = _hex_map[0].length
+    if (h === 0) {
+        return
+    }
     for (let i of _hex_map) {
         for (let _i of i) {
             o_map_editor_cell_data.push(o_map_editor_cell_func(_i))
+            let _u = o_map_editor_unit_func(_i)
+            if (_u !== null) {
+                o_map_editor_unit_data.push(_u)
+            }
         }
     }
 
@@ -62,7 +70,8 @@ async function output(_type = "gmap") {
         name: "WebMapEditorOutputMap",
         playerDatas: o_player_data,
         tileDataList: o_map_editor_cell_data,
-        selectablePlayers: o_player_selectable_players
+        selectablePlayers: o_player_selectable_players,
+        unitData: o_map_editor_unit_data
     })
 
     // 格式化
@@ -84,11 +93,12 @@ async function output(_type = "gmap") {
         if (!response.ok) {
             return;
         }
-        _json = response.body
+        _json = await response.json()
     } catch (e) {
         console.log(e)
     }
 
+    _json = JSON.stringify(_json["data"])
 
     // 前端下载
     let blob = new Blob([_json], {type: "application/json"})
@@ -163,6 +173,21 @@ function o_map_editor_cell_func(cell_data) {
     })
 }
 
+/**
+ *
+ * @param {CellItem} cell_data
+ * @return
+ */
+function o_map_editor_unit_func(cell_data) {
+    if (cell_data.unit_id === "") return null
+    return new EasyUnitData(
+        {
+            pos: new Vector2(cell_data.pos[0], cell_data.pos[1]),
+            PlayerNumber: cell_data.unit_belonging,
+            unitName: cell_data.unit_id
+        }
+    )
+}
 
 // 结构类
 class Vector2 {
