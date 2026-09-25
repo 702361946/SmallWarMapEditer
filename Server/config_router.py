@@ -14,6 +14,7 @@ from config import GameParameter
 
 router = APIRouter(tags=["config"])
 
+
 @router.get("/{config_name}")
 def get_config(config_name: str):
     match config_name:
@@ -23,6 +24,7 @@ def get_config(config_name: str):
             return get_config_unit_mapping()
         case _:
             raise HTTPException(404, f"Not Config {config_name}")
+
 
 def get_config_cell_mapping():
     return GameParameter.cell_mapping

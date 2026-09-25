@@ -39,6 +39,7 @@ def get_case_image(case_string: str):
     buffer.seek(0)
     return Response(content=buffer.getvalue(), media_type="image/png")
 
+
 @router.get("/cell/{cell_id}")
 def get_cell_image(cell_id: str):
     """获取地形类型图标 PNG"""

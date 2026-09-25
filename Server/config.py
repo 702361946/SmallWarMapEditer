@@ -9,8 +9,10 @@
 #  https://github.com/702361946
 
 from pathlib import Path
-from file_processing import PathData
+
 from dependency.modules._file_operations import Json
+
+from file_processing import PathData
 
 
 # 路径
@@ -74,6 +76,7 @@ class GameFixedParameter:
         "#FF44FF", "#00FFFF", "#FFFF44", "#888888",
     ]
 
+
 class GameParameter(GameFixedParameter):
     cell_mapping: dict[str, str | int | float | bool]
     unit_mapping: dict[str, str | int | float | bool]
@@ -89,6 +92,5 @@ class GameParameter(GameFixedParameter):
         cls.cell_mapping = cm.get()
         cls.unit_mapping = um.get()
 
+
 GameParameter()
-
-

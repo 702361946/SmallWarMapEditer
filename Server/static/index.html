@@ -10,9 +10,9 @@
 <head>
     <meta charset="UTF-8">
     <title>SmallWar Game MapEditor</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/PlayerConfig.css">
-    <link rel="stylesheet" href="css/MapEditor.css">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/PlayerConfig.css" rel="stylesheet">
+    <link href="css/MapEditor.css" rel="stylesheet">
     <link href="css/MapConfig.css" rel="stylesheet">
     <link href="css/Output.css" rel="stylesheet">
     <link href="css/BrushOptions/BrushOptions.css" rel="stylesheet">
@@ -22,83 +22,83 @@
 <script src="js/BrushOptions/BrushOptionsCell.js"></script>
 <script src="js/BrushOptions/BrushOptionsUnit.js"></script>
 <script src="js/CellItem.js"></script>
-    <!-- 左侧工具栏 -->
-    <div class="l_tool">
-        <!-- 地块选择刷 -->
-        <div class="brush_options">
-            <!-- 页面切换按钮容器 -->
-            <div class="brush_options_switch_div" id="brush_options_switch_div">
-                <!-- class is brush_options_switch_button -->
-            </div>
-            <div class="brush_options_table_div" id="brush_options_table_div">
-                <!-- class is brush_options_table_grid -->
-            </div>
-            <script src="js/BrushOptions/BrushOptionsTable.js"></script>
-            <script src="js/BrushOptions/BrushOptions.js"></script>
-            <script>
-                b_o_build_all_switch_button()
-                b_o_c_load_cell_list()
-            </script>
+<!-- 左侧工具栏 -->
+<div class="l_tool">
+    <!-- 地块选择刷 -->
+    <div class="brush_options">
+        <!-- 页面切换按钮容器 -->
+        <div class="brush_options_switch_div" id="brush_options_switch_div">
+            <!-- class is brush_options_switch_button -->
         </div>
-
-        <!-- 玩家列表 -->
-        <div class="player_config" id="player_config">
-            <div style="display: flex">
-                <span class="player_config_title">玩家设置</span>
-                <!-- 设置button -->
-                <div style="margin-left: auto;">
-                    <button onclick="addPlayer()">
-                        <span>添加玩家</span>
-                    </button>
-                    <button onclick="removePlayer()">
-                        <span>移除玩家</span>
-                    </button>
-                </div>
-            </div>
-            <div id="player_list" style="display: flex; flex-direction: column; overflow-y: auto">
-                <!-- 标题 -->
-                <div class="player_config_tab">
-                    <span style="width: 20%">ID</span>
-                    <span style="width: 20%">队伍</span>
-                    <span style="width: 20%">颜色</span>
-                    <span style="width: 40%">风格</span>
-                </div>
-                <!-- 在此插入玩家配置 -->
-            </div>
-            <script src="js/PlayerConfig.js"></script>
-            <script>
-                addPlayer()
-            </script>
+        <div class="brush_options_table_div" id="brush_options_table_div">
+            <!-- class is brush_options_table_grid -->
         </div>
-
-        <!-- 地图选项区域 -->
-        <div class="map_config_div" id="map_config">
-            <div class="map_config_information_div">
-                <span>当前地图大小</span>
-                <span id="map_config_information_xy_span">(x&y)</span>
-            </div>
-            <div class="map_config_button_div" id="map_config_button_div">
-
-            </div>
-            <script src="js/MapConfig.js"></script>
-            <script>
-                m_c_build_all_button()
-            </script>
-        </div>
-    </div>
-
-    <!-- 地图编辑区域 -->
-    <div class="map_editor">
-        <!-- 网格部分 -->
-        <div class="map_editor_hex_map" id="map_editor_hex_map_div">
-            <!-- 插入网格内容 -->
-            <!-- 嵌入svg后, cell类为map_editor_hex_cell -->
-        </div>
-        <script src="js/MapEditor.js"></script>
+        <script src="js/BrushOptions/BrushOptionsTable.js"></script>
+        <script src="js/BrushOptions/BrushOptions.js"></script>
         <script>
-            buildHexMap(30, 20, 32, 32)
+            b_o_build_all_switch_button()
+            b_o_c_load_cell_list()
         </script>
     </div>
+
+    <!-- 玩家列表 -->
+    <div class="player_config" id="player_config">
+        <div style="display: flex">
+            <span class="player_config_title">玩家设置</span>
+            <!-- 设置button -->
+            <div style="margin-left: auto;">
+                <button onclick="addPlayer()">
+                    <span>添加玩家</span>
+                </button>
+                <button onclick="removePlayer()">
+                    <span>移除玩家</span>
+                </button>
+            </div>
+        </div>
+        <div id="player_list" style="display: flex; flex-direction: column; overflow-y: auto">
+            <!-- 标题 -->
+            <div class="player_config_tab">
+                <span style="width: 20%">ID</span>
+                <span style="width: 20%">队伍</span>
+                <span style="width: 20%">颜色</span>
+                <span style="width: 40%">风格</span>
+            </div>
+            <!-- 在此插入玩家配置 -->
+        </div>
+        <script src="js/PlayerConfig.js"></script>
+        <script>
+            addPlayer()
+        </script>
+    </div>
+
+    <!-- 地图选项区域 -->
+    <div class="map_config_div" id="map_config">
+        <div class="map_config_information_div">
+            <span>当前地图大小</span>
+            <span id="map_config_information_xy_span">(x&y)</span>
+        </div>
+        <div class="map_config_button_div" id="map_config_button_div">
+
+        </div>
+        <script src="js/MapConfig.js"></script>
+        <script>
+            m_c_build_all_button()
+        </script>
+    </div>
+</div>
+
+<!-- 地图编辑区域 -->
+<div class="map_editor">
+    <!-- 网格部分 -->
+    <div class="map_editor_hex_map" id="map_editor_hex_map_div">
+        <!-- 插入网格内容 -->
+        <!-- 嵌入svg后, cell类为map_editor_hex_cell -->
+    </div>
+    <script src="js/MapEditor.js"></script>
+    <script>
+        buildHexMap(30, 20, 32, 32)
+    </script>
+</div>
 
 <!-- 导出按钮 -->
 <div class="output_button_div" id="output_button_div">

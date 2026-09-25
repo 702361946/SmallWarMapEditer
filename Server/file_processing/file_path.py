@@ -5,6 +5,7 @@
 
 from pathlib import Path
 
+
 class PathData:
     image_dir: Path
     cell_image_dir: Path

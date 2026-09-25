@@ -8,6 +8,7 @@ from PIL import Image
 
 from .file_path import PathData
 
+
 class ImageProcessor:
     @classmethod
     def get_image(cls, path: Path | str) -> Image.Image | None:

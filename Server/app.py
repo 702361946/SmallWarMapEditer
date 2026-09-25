@@ -14,10 +14,11 @@ Python 3.12+ | FastAPI
 #  702361946@qq.com
 #  https://github.com/702361946
 
-from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
-from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from config_router import router as config_router
 from image_router import router as image_router
@@ -63,4 +64,5 @@ app.mount(
 # ── 入口 ──
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run("app:app", host="127.0.0.1", port=65000, reload=True)
