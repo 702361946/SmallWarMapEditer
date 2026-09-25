@@ -24,3 +24,8 @@ class ImageProcessor:
     def get_id_unit_image(cls, _id: str):
         fp = PathData.unit_image_dir / "id" / f"{_id}.png"
         return Image.open(fp)
+
+    @classmethod
+    def get_belonging_image(cls, _id: str):
+        fp = PathData.belonging_image_dir / f"{_id}.png"
+        return Image.open(fp)

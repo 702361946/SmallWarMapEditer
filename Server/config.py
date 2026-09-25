@@ -30,7 +30,12 @@ PathConfig.init_mkdir()
 json = Json(file_save_path=str(PathConfig.config_dir))
 
 _p = PathConfig.base_dir / "Files" / "Image"
-PathData(image_dir=_p, cell_image_dir=_p / "Cell", unit_image_dir=_p / "Unit")
+PathData(
+    image_dir=_p,
+    cell_image_dir=_p / "Cell",
+    unit_image_dir=_p / "Unit",
+    belonging_image_dir=_p / "Belonging",
+)
 
 
 # 固定参

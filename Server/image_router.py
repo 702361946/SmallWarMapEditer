@@ -57,3 +57,12 @@ def get_unit_image(unit_id: str):
     image.save(buffer, format="PNG")
     buffer.seek(0)
     return Response(content=buffer.getvalue(), media_type="image/png")
+
+
+@router.get("/belonging/{bel}")
+def get_belonging_image(bel: str):
+    image = ImageProcessor.get_belonging_image(bel)
+    buffer = BytesIO()
+    image.save(buffer, format="PNG")
+    buffer.seek(0)
+    return Response(content=buffer.getvalue(), media_type="image/png")

@@ -10,15 +10,18 @@ class PathData:
     image_dir: Path
     cell_image_dir: Path
     unit_image_dir: Path
+    belonging_image_dir: Path
 
     @classmethod
-    def __init__(cls, image_dir, cell_image_dir, unit_image_dir):
+    def __init__(cls, image_dir, cell_image_dir, unit_image_dir, belonging_image_dir):
         cls.image_dir = image_dir
         cls.cell_image_dir = cell_image_dir
         cls.unit_image_dir = unit_image_dir
+        cls.belonging_image_dir = belonging_image_dir
         cls.image_dir.mkdir(parents=True, exist_ok=True)
         cls.cell_image_dir.mkdir(parents=True, exist_ok=True)
         cls.unit_image_dir.mkdir(parents=True, exist_ok=True)
+        cls.belonging_image_dir.mkdir(parents=True, exist_ok=True)
 
     @classmethod
     def get_image_path(cls, image_name: str):
