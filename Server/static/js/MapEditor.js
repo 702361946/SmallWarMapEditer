@@ -224,10 +224,11 @@ function buildHexMap(q, r, width, height) {
 
             const points = _qr_to_svg_points(cx, cy, offsets);
 
-            // 4. 插入 polygon
+            // 插入 polygon
             const cell = document.createElementNS(svgNs, 'polygon')
             const img_cell = document.createElementNS(svgNs, 'image')
             const img_unit = document.createElementNS(svgNs, "image")
+            const img_bel = document.createElementNS(svgNs, "image")
 
             cell.dataset.x = _q.toString()
             cell.dataset.y = _r.toString()
@@ -235,6 +236,8 @@ function buildHexMap(q, r, width, height) {
             img_cell.dataset.y = _r.toString()
             img_unit.dataset.x = _q.toString()
             img_unit.dataset.y = _r.toString()
+            img_bel.dataset.x = _q.toString()
+            img_bel.dataset.y = _r.toString()
 
             cell.setAttribute('points', points);
             cell.setAttribute('class', 'map_editor_six_cell');
@@ -243,18 +246,24 @@ function buildHexMap(q, r, width, height) {
             img_cell.setAttribute('height', '48');
             img_unit.setAttribute('width', '32')
             img_unit.setAttribute('height', '32')
+            img_bel.setAttribute('width', '8')
+            img_bel.setAttribute('height', '8')
 
             // 让图片中心对准 cell 中心，y 多向上偏 8px（高出的部分）
             img_cell.setAttribute('x', (cx - 16).toString());
             img_cell.setAttribute('y', (cy - 32).toString());
             img_unit.setAttribute('x', (cx - 16).toString());
             img_unit.setAttribute('y', (cy - 16).toString());
+            // 对齐六边形右下角
+            img_bel.setAttribute('x', (cx + 2).toString());
+            img_bel.setAttribute('y', (cy + 8).toString());
 
             set_cell_image(0, img_cell)
 
             svg.append(cell);
             svg.append(img_cell);  // image应在cell后绘制
             svg.append(img_unit)
+            svg.append(img_bel)
 
             // 交互
             let r_f = () => {
@@ -266,11 +275,15 @@ function buildHexMap(q, r, width, height) {
                     case "unit":
                         set_unit_image(on_unit_id, img_unit)
                         break
+                    case "belonging":
+                        set_belonging_image(on_belonging, img_bel)
+                        break
                 }
             }
             cell.addEventListener('click', r_f);
             img_cell.addEventListener('click', r_f)
             img_unit.addEventListener('click', r_f)
+            img_bel.addEventListener('click', r_f)
         }
     }
 
@@ -343,4 +356,29 @@ function set_unit_image(unit_id, unit_img) {
 
     // console.log("debug", cell.dataset.x, cell.dataset.y)
     _hex_map[Number(unit_img.dataset.y)][Number(unit_img.dataset.x)].unit_id = unit_id
+}
+
+/**
+ *
+ * @param {Number} bel
+ * @param {SVGImageElement} bel_img
+ */
+function set_belonging_image(bel, bel_img) {
+    if (bel === 0) {
+        bel_img.removeAttribute("href")
+    } else {
+        bel_img.setAttribute(
+            "href",
+            `/Game/SmallWar/MapEditor/Image/belonging/${bel}`
+        )
+    }
+
+    if (!"x" in bel_img.dataset) {
+        return
+    }
+    if (!"y" in bel_img.dataset) {
+        return
+    }
+
+    _hex_map[Number(bel_img.dataset.y)][Number(bel_img.dataset.x)].unit_belonging = bel
 }
