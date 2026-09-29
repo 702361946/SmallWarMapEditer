@@ -207,6 +207,7 @@ function buildHexMap(q, r, width, height) {
 
     // 遍历网格
     // odd-q
+    // 需要重新调整加入顺序以免不同图层互相影响
     for (let _q = 0; _q < q; _q++) {
         for (let _r = 0; _r < r; _r++) {
             let cx = _q * width * (3 / 4)

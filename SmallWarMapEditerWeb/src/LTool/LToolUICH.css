@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2026.
+ * @702361946
+ * 702361946@qq.com
+ * https://github.com/702361946
+ */
+
+.player_config_dropdown_list_panel {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    height: fit-content;
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 4px;
+    min-width: 120px;
+}
+
+.player_config_dropdown_list_item {
+    display: block;
+    width: 100%;
+    height: 32px;
+    padding: 8px 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #334155;
+    text-align: left;
+}
+
+.player_config_dropdown_list_item:hover {
+    background: #f1f5f9;
+}
+
+.dropdown_active {
+    border-color: #3b82f6;
+    background: #eff6ff;
+    color: #2563eb;
+}

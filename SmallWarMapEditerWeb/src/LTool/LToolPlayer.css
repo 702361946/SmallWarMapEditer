@@ -1,0 +1,68 @@
+/*
+ * Copyright (c) 2026.
+ * @702361946
+ * 702361946@qq.com
+ * https://github.com/702361946
+ */
+
+.player_config {
+    max-height: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.player_config_title {
+    font-size: 14px;
+}
+
+.player_config_tab {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 8px 0;
+    border-bottom: 1px solid #1a4a7a;
+    font-size: 11px;
+    color: #888;
+}
+
+.player_config_team_div {
+    display: flex;
+    width: 20%;
+}
+
+.player_config_team_span {
+    display: flex;
+    width: 80%;
+}
+
+.player_config_color_div {
+    display: flex;
+    width: 20%;
+}
+
+.player_config_color_block {
+    height: 16px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player_config_style_div {
+    display: flex;
+    width: 40%;
+}
+
+.player_config_style_span {
+    display: flex;
+    width: 90%;
+}
+
+.player_config_dropdown_button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: right;
+    flex-shrink: 0;
+}

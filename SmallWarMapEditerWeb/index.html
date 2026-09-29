@@ -10,19 +10,9 @@
 <head>
     <meta charset="UTF-8">
     <title>SmallWar Game MapEditor</title>
-    <link href="css/index.css" rel="stylesheet">
-    <link href="css/PlayerConfig.css" rel="stylesheet">
-    <link href="css/MapEditor.css" rel="stylesheet">
-    <link href="css/MapConfig.css" rel="stylesheet">
-    <link href="css/Output.css" rel="stylesheet">
-    <link href="css/BrushOptions/BrushOptions.css" rel="stylesheet">
-    <link href="css/BrushOptions/BrushOptionsTable.css" rel="stylesheet">
 </head>
-<body style="background: #121212; display: flex">
-<script src="js/BrushOptions/BrushOptionsCell.js"></script>
-<script src="js/BrushOptions/BrushOptionsUnit.js"></script>
-<script src="js/BrushOptions/BrushOptionsBelonging.js"></script>
-<script src="js/CellItem.js"></script>
+<body style="display: flex">
+
 <!-- 左侧工具栏 -->
 <div class="l_tool">
     <!-- 地块选择刷 -->
@@ -34,12 +24,6 @@
         <div class="brush_options_table_div" id="brush_options_table_div">
             <!-- class is brush_options_table_grid -->
         </div>
-        <script src="js/BrushOptions/BrushOptionsTable.js"></script>
-        <script src="js/BrushOptions/BrushOptions.js"></script>
-        <script>
-            b_o_build_all_switch_button()
-            b_o_c_load_cell_list()
-        </script>
     </div>
 
     <!-- 玩家列表 -->
@@ -66,10 +50,6 @@
             </div>
             <!-- 在此插入玩家配置 -->
         </div>
-        <script src="js/PlayerConfig.js"></script>
-        <script>
-            addPlayer()
-        </script>
     </div>
 
     <!-- 地图选项区域 -->
@@ -81,10 +61,6 @@
         <div class="map_config_button_div" id="map_config_button_div">
 
         </div>
-        <script src="js/MapConfig.js"></script>
-        <script>
-            m_c_build_all_button()
-        </script>
     </div>
 </div>
 
@@ -99,18 +75,12 @@
     <div>
 
     </div>
-    <script src="js/MapEditor.js"></script>
-    <script>
-        buildHexMap(30, 20, 32, 32)
-    </script>
 </div>
 
 <!-- 导出按钮 -->
 <div class="output_button_div" id="output_button_div">
-    <script src="js/Output.js"></script>
-    <script>
-        build_output_all_button()
-    </script>
 </div>
+
+<script src="./src/main.ts" type="module"></script>
 </body>
 </html>

@@ -7,10 +7,13 @@ dist/
 log/
 build/
 
+node_modules/
+
 temp.*
 
 .editorconfig
 mypy.ini
+package-lock.json
 
 /.codex/
 Docs/AI/
