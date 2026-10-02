@@ -53,7 +53,7 @@ app.include_router(output_router, prefix="/Game/SmallWar/MapEditor/Output")
 
 # 静态文件: /Game/SmallWar/MapEditor/*
 BASE_DIR = Path(__file__).parent.resolve()
-STATIC_DIR = BASE_DIR / "static"
+STATIC_DIR = BASE_DIR / "dist"
 STATIC_DIR.mkdir(parents=True, exist_ok=True)
 app.mount(
     "/Game/SmallWar/MapEditor",
