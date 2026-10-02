@@ -9,7 +9,6 @@ import "./Output.css";
 
 import {
     getHexMap,
-    Vector2,
     TileData,
     EasyUnitData,
     EasyPlayerData,

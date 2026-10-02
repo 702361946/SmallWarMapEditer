@@ -197,7 +197,7 @@ function setMapSvg(mapW: number, mapH: number, mSvg: SVGSVGElement): void {
         const oldW = state.vbW;
         const oldH = state.vbH;
         let newW = oldW * factor;
-        let newH = oldH * factor;
+        let newH: number;
         newW = Math.min(mapW / MIN_SCALE, Math.max(mapW / MAX_SCALE, newW));
         newH = newW * (mapH / mapW);
         state.vbX += (oldW - newW) * px;
