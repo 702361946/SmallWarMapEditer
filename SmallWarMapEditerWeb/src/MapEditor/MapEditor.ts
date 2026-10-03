@@ -21,7 +21,7 @@ export function setMapSizeInfoCallback(cb: (x: number, y: number) => void): void
     _mapSizeInfoCallback = cb;
 }
 
-export function buildHexMap(q: number, r: number, w: number, h: number): void {
+function buildHexMap(q: number, r: number, w: number, h: number): void {
     _hexMapDiv = document.getElementById("map_editor_hex_map_div")!;
     _hexMapDiv.innerHTML = "";
 
@@ -44,6 +44,12 @@ export function buildHexMap(q: number, r: number, w: number, h: number): void {
     const svg = document.createElementNS(svgNs, "svg");
     svg.style.display = "block";
 
+    // 懒得命名了
+    const t1: SVGElement[] = []
+    const t2: SVGElement[] = []
+    const t3: SVGElement[] = []
+    const t4: SVGElement[] = []
+
     for (let _q = 0; _q < q; _q++) {
         for (let _r = 0; _r < r; _r++) {
             let cx = _q * w * (3 / 4);
@@ -56,43 +62,62 @@ export function buildHexMap(q: number, r: number, w: number, h: number): void {
             cy -= hHalf;
             const points = _qrToSvgPoints(cx, cy, offsets);
 
+            function _getImageElement(
+                x: string,
+                y: string,
+                w: string,
+                h: string,
+                data_x: string,
+                data_y: string,
+            ) {
+                const img = document.createElementNS(svgNs, "image")
+                img.dataset.x = data_x
+                img.dataset.y = data_y
+
+                img.setAttribute("x", x)
+                img.setAttribute("y", y)
+                img.setAttribute("width", w)
+                img.setAttribute("height", h)
+
+                return img
+            }
+
+            const _q_s = _q.toString()
+            const _r_s = _r.toString()
+            const imgCell = _getImageElement(
+                (cx - CELL_IMG_W / 2).toString(),
+                (cy - CELL_IMG_H / 2 - 8).toString(),
+                CELL_IMG_W.toString(),
+                CELL_IMG_H.toString(),
+                _q_s,
+                _r_s
+            )
+            const imgUnit = _getImageElement(
+                (cx - UNIT_IMG_SIZE / 2).toString(),
+                (cy - UNIT_IMG_SIZE / 2).toString(),
+                UNIT_IMG_SIZE.toString(),
+                UNIT_IMG_SIZE.toString(),
+                _q_s,
+                _r_s
+            )
+            const imgBel = _getImageElement(
+                (cx + 2).toString(),
+                (cy + 8).toString(),
+                BEL_IMG_SIZE.toString(),
+                BEL_IMG_SIZE.toString(),
+                _q_s,
+                _r_s
+            )
+
             const cell = document.createElementNS(svgNs, "polygon");
-            const imgCell = document.createElementNS(svgNs, "image");
-            const imgUnit = document.createElementNS(svgNs, "image");
-            const imgBel = document.createElementNS(svgNs, "image");
 
             cell.dataset.x = _q.toString();
             cell.dataset.y = _r.toString();
-            imgCell.dataset.x = _q.toString();
-            imgCell.dataset.y = _r.toString();
-            imgUnit.dataset.x = _q.toString();
-            imgUnit.dataset.y = _r.toString();
-            imgBel.dataset.x = _q.toString();
-            imgBel.dataset.y = _r.toString();
 
             cell.setAttribute("points", points);
             cell.setAttribute("class", "map_editor_six_cell");
 
-            imgCell.setAttribute("width", CELL_IMG_W.toString());
-            imgCell.setAttribute("height", CELL_IMG_H.toString());
-            imgUnit.setAttribute("width", UNIT_IMG_SIZE.toString());
-            imgUnit.setAttribute("height", UNIT_IMG_SIZE.toString());
-            imgBel.setAttribute("width", BEL_IMG_SIZE.toString());
-            imgBel.setAttribute("height", BEL_IMG_SIZE.toString());
-
-            imgCell.setAttribute("x", (cx - CELL_IMG_W / 2).toString());
-            imgCell.setAttribute("y", (cy - CELL_IMG_H / 2 - 8).toString());
-            imgUnit.setAttribute("x", (cx - UNIT_IMG_SIZE / 2).toString());
-            imgUnit.setAttribute("y", (cy - UNIT_IMG_SIZE / 2).toString());
-            imgBel.setAttribute("x", (cx + 2).toString());
-            imgBel.setAttribute("y", (cy + 8).toString());
-
             setCellImage(0, imgCell);
-
-            svg.append(cell);
-            svg.append(imgCell);
-            svg.append(imgUnit);
-            svg.append(imgBel);
 
             const rF = () => {
                 console.log("点击了", _q, _r);
@@ -108,14 +133,31 @@ export function buildHexMap(q: number, r: number, w: number, h: number): void {
                         break;
                 }
             };
+
             cell.addEventListener("click", rF);
             imgCell.addEventListener("click", rF);
             imgUnit.addEventListener("click", rF);
             imgBel.addEventListener("click", rF);
+
+            t1.push(cell)
+            t2.push(imgCell)
+            t3.push(imgUnit)
+            t4.push(imgBel)
         }
     }
 
     svg.setAttribute("width", mapW.toString());
+
+    let t = (_t: SVGElement[]) => {
+        for (const el of _t) {
+            svg.append(el);
+        }
+    }
+    t(t1)
+    t(t2)
+    t(t3)
+    t(t4)
+
     svg.setAttribute("height", mapH.toString());
     svg.setAttribute("viewBox", `0 0 ${mapW} ${mapH}`);
 
@@ -132,6 +174,8 @@ export function buildHexMap(q: number, r: number, w: number, h: number): void {
         _mapSizeInfoCallback(q, r);
     }
 }
+
+export default buildHexMap
 
 function _getCellFlatToppedOffsets(w: number, h: number): number[][] {
     const wHalf = w / 2;

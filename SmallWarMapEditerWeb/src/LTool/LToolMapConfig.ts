@@ -8,7 +8,7 @@
 import "./LToolMapConfig.css";
 
 import {MAP_DEFAULT_XY, MAP_MIN_XY, MAP_MAX_XY, CELL_SIZE} from "../Config";
-import {buildHexMap, setMapSizeInfoCallback} from "../MapEditor/MapEditor";
+import buildHexMap, {setMapSizeInfoCallback} from "../MapEditor/MapEditor";
 
 export class LToolMapConfig {
     private readonly _xySpan: HTMLSpanElement;
