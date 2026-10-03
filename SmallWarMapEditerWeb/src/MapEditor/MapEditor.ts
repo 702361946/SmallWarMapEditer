@@ -21,6 +21,48 @@ export function setMapSizeInfoCallback(cb: (x: number, y: number) => void): void
     _mapSizeInfoCallback = cb;
 }
 
+interface CellElements {
+    cell: SVGPolygonElement;
+    imgCell: SVGImageElement;
+    imgUnit: SVGImageElement;
+    imgBel: SVGImageElement;
+}
+
+function getCellsInRange(centerQ: number, centerR: number, size: number, maxQ: number, maxR: number): [number, number][] {
+    const radius = size - 1;
+    if (radius <= 0) {
+        if (centerQ >= 0 && centerQ < maxQ && centerR >= 0 && centerR < maxR) {
+            return [[centerQ, centerR]];
+        }
+        return [];
+    }
+
+    // odd-r to cube
+    const cx = centerQ;
+    const cz = centerR - (centerQ - (centerQ & 1)) / 2;
+
+    const results: [number, number][] = [];
+
+    for (let dx = -radius; dx <= radius; dx++) {
+        for (let dy = Math.max(-radius, -dx - radius); dy <= Math.min(radius, -dx + radius); dy++) {
+            const dz = -dx - dy;
+            const dist = (Math.abs(dx) + Math.abs(dy) + Math.abs(dz)) / 2;
+            if (dist > radius) continue;
+
+            const x = cx + dx;
+            const z = cz + dz;
+            const q = x;
+            const r = z + (x - (x & 1)) / 2;
+
+            if (q >= 0 && q < maxQ && r >= 0 && r < maxR) {
+                results.push([q, r]);
+            }
+        }
+    }
+
+    return results;
+}
+
 function buildHexMap(q: number, r: number, w: number, h: number): void {
     _hexMapDiv = document.getElementById("map_editor_hex_map_div")!;
     _hexMapDiv.innerHTML = "";
@@ -44,11 +86,12 @@ function buildHexMap(q: number, r: number, w: number, h: number): void {
     const svg = document.createElementNS(svgNs, "svg");
     svg.style.display = "block";
 
-    // 懒得命名了
-    const t1: SVGElement[] = []
-    const t2: SVGElement[] = []
-    const t3: SVGElement[] = []
-    const t4: SVGElement[] = []
+    const t1: SVGElement[] = [];
+    const t2: SVGElement[] = [];
+    const t3: SVGElement[] = [];
+    const t4: SVGElement[] = [];
+
+    const cellElementsMap = new Map<string, CellElements>();
 
     for (let _q = 0; _q < q; _q++) {
         for (let _r = 0; _r < r; _r++) {
@@ -70,20 +113,20 @@ function buildHexMap(q: number, r: number, w: number, h: number): void {
                 data_x: string,
                 data_y: string,
             ) {
-                const img = document.createElementNS(svgNs, "image")
-                img.dataset.x = data_x
-                img.dataset.y = data_y
+                const img = document.createElementNS(svgNs, "image");
+                img.dataset.x = data_x;
+                img.dataset.y = data_y;
 
-                img.setAttribute("x", x)
-                img.setAttribute("y", y)
-                img.setAttribute("width", w)
-                img.setAttribute("height", h)
+                img.setAttribute("x", x);
+                img.setAttribute("y", y);
+                img.setAttribute("width", w);
+                img.setAttribute("height", h);
 
-                return img
+                return img;
             }
 
-            const _q_s = _q.toString()
-            const _r_s = _r.toString()
+            const _q_s = _q.toString();
+            const _r_s = _r.toString();
             const imgCell = _getImageElement(
                 (cx - CELL_IMG_W / 2).toString(),
                 (cy - CELL_IMG_H / 2 - 8).toString(),
@@ -91,7 +134,7 @@ function buildHexMap(q: number, r: number, w: number, h: number): void {
                 CELL_IMG_H.toString(),
                 _q_s,
                 _r_s
-            )
+            );
             const imgUnit = _getImageElement(
                 (cx - UNIT_IMG_SIZE / 2).toString(),
                 (cy - UNIT_IMG_SIZE / 2).toString(),
@@ -99,7 +142,7 @@ function buildHexMap(q: number, r: number, w: number, h: number): void {
                 UNIT_IMG_SIZE.toString(),
                 _q_s,
                 _r_s
-            )
+            );
             const imgBel = _getImageElement(
                 (cx + 2).toString(),
                 (cy + 8).toString(),
@@ -107,7 +150,7 @@ function buildHexMap(q: number, r: number, w: number, h: number): void {
                 BEL_IMG_SIZE.toString(),
                 _q_s,
                 _r_s
-            )
+            );
 
             const cell = document.createElementNS(svgNs, "polygon");
 
@@ -119,19 +162,12 @@ function buildHexMap(q: number, r: number, w: number, h: number): void {
 
             setCellImage(0, imgCell);
 
+            const key = `${_q},${_r}`;
+            cellElementsMap.set(key, {cell, imgCell, imgUnit, imgBel});
+
             const rF = () => {
                 console.log("点击了", _q, _r);
-                switch (Brush.onBrush) {
-                    case "cell":
-                        setCellImage(Brush.onCellId, imgCell);
-                        break;
-                    case "unit":
-                        setUnitImage(Brush.onUnitId, imgUnit);
-                        break;
-                    case "belonging":
-                        setBelongingImage(Brush.onBelonging, imgBel);
-                        break;
-                }
+                paintCells(_q, _r);
             };
 
             cell.addEventListener("click", rF);
@@ -139,10 +175,31 @@ function buildHexMap(q: number, r: number, w: number, h: number): void {
             imgUnit.addEventListener("click", rF);
             imgBel.addEventListener("click", rF);
 
-            t1.push(cell)
-            t2.push(imgCell)
-            t3.push(imgUnit)
-            t4.push(imgBel)
+            t1.push(cell);
+            t2.push(imgCell);
+            t3.push(imgUnit);
+            t4.push(imgBel);
+        }
+    }
+
+    function paintCells(centerQ: number, centerR: number): void {
+        const cells = getCellsInRange(centerQ, centerR, Brush.brushSize, q, r);
+        for (const [cq, cr] of cells) {
+            const key = `${cq},${cr}`;
+            const el = cellElementsMap.get(key);
+            if (!el) continue;
+
+            switch (Brush.onBrush) {
+                case "cell":
+                    setCellImage(Brush.onCellId, el.imgCell);
+                    break;
+                case "unit":
+                    setUnitImage(Brush.onUnitId, el.imgUnit);
+                    break;
+                case "belonging":
+                    setBelongingImage(Brush.onBelonging, el.imgBel);
+                    break;
+            }
         }
     }
 
@@ -152,11 +209,11 @@ function buildHexMap(q: number, r: number, w: number, h: number): void {
         for (const el of _t) {
             svg.append(el);
         }
-    }
-    t(t1)
-    t(t2)
-    t(t3)
-    t(t4)
+    };
+    t(t1);
+    t(t2);
+    t(t3);
+    t(t4);
 
     svg.setAttribute("height", mapH.toString());
     svg.setAttribute("viewBox", `0 0 ${mapW} ${mapH}`);
@@ -166,7 +223,7 @@ function buildHexMap(q: number, r: number, w: number, h: number): void {
     mSvg.setAttribute("height", "100%");
     mSvg.setAttribute("viewBox", `0 0 ${mapW} ${mapH}`);
 
-    setMapSvg(mapW, mapH, mSvg);
+    setMapSvg(mapW, mapH, mSvg, paintCells);
     mSvg.append(svg);
     _hexMapDiv.append(mSvg);
 
@@ -175,7 +232,7 @@ function buildHexMap(q: number, r: number, w: number, h: number): void {
     }
 }
 
-export default buildHexMap
+export default buildHexMap;
 
 function _getCellFlatToppedOffsets(w: number, h: number): number[][] {
     const wHalf = w / 2;
@@ -197,7 +254,7 @@ function _qrToSvgPoints(cx: number, cy: number, offsets: number[][]): string {
         .join(" ");
 }
 
-function setMapSvg(mapW: number, mapH: number, mSvg: SVGSVGElement): void {
+function setMapSvg(mapW: number, mapH: number, mSvg: SVGSVGElement, paintCells: (q: number, r: number) => void): void {
     const MIN_SCALE = 1;
     const MAX_SCALE = 2;
     const DRAG_THRESHOLD = 20;
@@ -258,38 +315,73 @@ function setMapSvg(mapW: number, mapH: number, mSvg: SVGSVGElement): void {
         active: boolean;
         id: number;
         lastX?: number;
-        lastY?: number
+        lastY?: number;
+        lastPaintedKey?: string;
     } | null = null;
 
     mSvg.addEventListener("pointerdown", (e) => {
         dragInfo = {startX: e.clientX, startY: e.clientY, active: false, id: e.pointerId};
+        if (Brush.lockMove) {
+            const el = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement;
+            if (el && (el.tagName === "polygon" || el.tagName === "image") && el.dataset.x && el.dataset.y) {
+                const pq = Number(el.dataset.x);
+                const pr = Number(el.dataset.y);
+                paintCells(pq, pr);
+                dragInfo.lastPaintedKey = `${pq},${pr}`;
+            }
+        }
     });
 
     mSvg.addEventListener("pointermove", (e) => {
         if (!dragInfo || e.pointerId !== dragInfo.id) return;
 
-        if (!dragInfo.active) {
-            const dist = Math.hypot(e.clientX - dragInfo.startX, e.clientY - dragInfo.startY);
-            if (dist < DRAG_THRESHOLD) return;
-            dragInfo.active = true;
-            try {
-                mSvg.setPointerCapture(e.pointerId);
-            } catch (_) {
+        if (!Brush.lockMove) {
+            // 原有拖拽移动逻辑
+            if (!dragInfo.active) {
+                const dist = Math.hypot(e.clientX - dragInfo.startX, e.clientY - dragInfo.startY);
+                if (dist < DRAG_THRESHOLD) return;
+                dragInfo.active = true;
+                try {
+                    mSvg.setPointerCapture(e.pointerId);
+                } catch (_) {
+                }
+                dragInfo.lastX = e.clientX;
+                dragInfo.lastY = e.clientY;
+                return;
             }
+
+            const {drawnW, drawnH} = getViewMetrics();
+            const scaleX = state.vbW / drawnW;
+            const scaleY = state.vbH / drawnH;
+            state.vbX -= (e.clientX - (dragInfo.lastX ?? e.clientX)) * scaleX;
+            state.vbY -= (e.clientY - (dragInfo.lastY ?? e.clientY)) * scaleY;
             dragInfo.lastX = e.clientX;
             dragInfo.lastY = e.clientY;
-            return;
-        }
+            clampState();
+            applyViewBox();
+        } else {
+            // 笔刷绘制模式
+            if (!dragInfo.active) {
+                const dist = Math.hypot(e.clientX - dragInfo.startX, e.clientY - dragInfo.startY);
+                if (dist < DRAG_THRESHOLD) return;
+                dragInfo.active = true;
+                try {
+                    mSvg.setPointerCapture(e.pointerId);
+                } catch (_) {
+                }
+            }
 
-        const {drawnW, drawnH} = getViewMetrics();
-        const scaleX = state.vbW / drawnW;
-        const scaleY = state.vbH / drawnH;
-        state.vbX -= (e.clientX - (dragInfo.lastX ?? e.clientX)) * scaleX;
-        state.vbY -= (e.clientY - (dragInfo.lastY ?? e.clientY)) * scaleY;
-        dragInfo.lastX = e.clientX;
-        dragInfo.lastY = e.clientY;
-        clampState();
-        applyViewBox();
+            const el = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement;
+            if (el && (el.tagName === "polygon" || el.tagName === "image") && el.dataset.x && el.dataset.y) {
+                const pq = Number(el.dataset.x);
+                const pr = Number(el.dataset.y);
+                const key = `${pq},${pr}`;
+                if (dragInfo.lastPaintedKey !== key) {
+                    paintCells(pq, pr);
+                    dragInfo.lastPaintedKey = key;
+                }
+            }
+        }
     });
 
     mSvg.addEventListener("pointerup", (e) => {

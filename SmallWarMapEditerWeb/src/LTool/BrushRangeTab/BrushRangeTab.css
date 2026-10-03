@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 2026.
+ * @702361946
+ * 702361946@qq.com
+ * https://github.com/702361946
+ */
+
+.brush_range_row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+}
+
+.brush_range_label {
+    font-size: 14px;
+    color: #e0e0e0;
+    white-space: nowrap;
+}
+
+.brush_range_slider_wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+}
+
+.brush_range_slider {
+    flex: 1;
+    cursor: pointer;
+}
+
+.brush_range_value {
+    font-size: 14px;
+    color: #e0e0e0;
+    min-width: 16px;
+    text-align: center;
+}
+
+.brush_range_lock_btn {
+    font-size: 16px;
+    padding: 2px 6px;
+    cursor: pointer;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #e0e0e0;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.brush_range_lock_btn:hover {
+    background: #3a3a3a;
+}
+
+.brush_range_lock_btn.active {
+    background: #4a3a00;
+    border-color: #aa8800;
+    color: #ffcc00;
+}

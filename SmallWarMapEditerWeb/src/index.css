@@ -22,3 +22,11 @@ body {
     height: 100vh;
     width: 75vw;
 }
+
+.brush_range_options {
+    display: flow;
+    max-height: 48px;
+    min-height: 48px;
+    border-bottom: 1px solid #333;
+    margin-top: auto;
+}

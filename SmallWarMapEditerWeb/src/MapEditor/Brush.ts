@@ -47,4 +47,24 @@ export class Brush {
     static set onBelonging(v: number) {
         this._onBelonging = v;
     }
+
+    private static _brushSize = 1;
+
+    static get brushSize(): number {
+        return this._brushSize;
+    }
+
+    static set brushSize(v: number) {
+        this._brushSize = Math.max(1, Math.min(7, Math.round(v)));
+    }
+
+    private static _lockMove = false;
+
+    static get lockMove(): boolean {
+        return this._lockMove;
+    }
+
+    static set lockMove(v: boolean) {
+        this._lockMove = v;
+    }
 }
