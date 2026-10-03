@@ -7,7 +7,7 @@
 
 import "./index.css";
 
-import {MAP_DEFAULT_XY, CELL_SIZE} from "./Config";
+import {CELL_SIZE, MAP_DEFAULT_XY} from "./Config";
 import buildHexMap from "./MapEditor/MapEditor";
 import {BTUIRegister} from "./LTool/BrushTab/BTUIRegister";
 import {BrushTab} from "./LTool/BrushTab/BrushTab";

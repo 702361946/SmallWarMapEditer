@@ -5,8 +5,8 @@
  * https://github.com/702361946
  */
 
-import {Brush} from "../../MapEditor/Brush";
 import type {BrushType} from "../../MapEditor/Brush";
+import {Brush} from "../../MapEditor/Brush";
 
 export class BTUIRegister {
     private readonly _div: HTMLElement;
