@@ -7,14 +7,8 @@
 
 import "./Output.css";
 
-import {
-    getHexMap,
-    TileData,
-    EasyUnitData,
-    EasyPlayerData,
-    MapData,
-} from "./MapSave";
-import type {PlayerData, CellItem} from "./MapSave";
+import type {CellItem, PlayerData} from "./MapSave";
+import {EasyPlayerData, EasyUnitData, getHexMap, MapData, TileData,} from "./MapSave";
 import {URLS} from "./URLConfig";
 
 export class Output {

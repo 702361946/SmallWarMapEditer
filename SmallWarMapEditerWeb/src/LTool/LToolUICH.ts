@@ -11,7 +11,7 @@ export function createDropdownButton(callbackFunction: (() => void) | null = nul
     const dropdownBtn = document.createElement("button");
     dropdownBtn.classList.add("player_config_dropdown_button");
     dropdownBtn.innerHTML =
-        `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b0b0b0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
         </svg>`;
 

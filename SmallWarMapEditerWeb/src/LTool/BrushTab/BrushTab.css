@@ -9,11 +9,34 @@
     display: flow;
     max-height: 25%;
     min-height: 25%;
+    background: #1a1a1a;
 }
 
 .brush_options_switch_div {
     display: flex;
+    gap: 4px;
+    padding: 6px 8px;
+    border-bottom: 1px solid #333;
 }
 
 .brush_options_switch_button {
+    flex: 1;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    color: #b0b0b0;
+    border-radius: 4px;
+    padding: 6px 0;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.brush_options_switch_button:hover {
+    background: #3a3a3a;
+    border-color: #777;
+}
+
+.brush_options_switch_button.active {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: #38bdf8;
+    color: #38bdf8;
 }

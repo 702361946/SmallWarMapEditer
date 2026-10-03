@@ -53,7 +53,7 @@
 }
 
 .brush_range_lock_btn.active {
-    background: #4a3a00;
-    border-color: #aa8800;
-    color: #ffcc00;
+    background: rgba(56, 189, 248, 0.15);
+    border-color: #38bdf8;
+    color: #38bdf8;
 }

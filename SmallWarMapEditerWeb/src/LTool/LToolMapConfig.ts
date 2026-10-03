@@ -7,7 +7,7 @@
 
 import "./LToolMapConfig.css";
 
-import {MAP_DEFAULT_XY, MAP_MIN_XY, MAP_MAX_XY, CELL_SIZE} from "../Config";
+import {CELL_SIZE, MAP_DEFAULT_XY, MAP_MAX_XY, MAP_MIN_XY} from "../Config";
 import buildHexMap, {setMapSizeInfoCallback} from "../MapEditor/MapEditor";
 
 export class LToolMapConfig {

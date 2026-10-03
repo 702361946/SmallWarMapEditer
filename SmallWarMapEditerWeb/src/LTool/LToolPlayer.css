@@ -9,10 +9,26 @@
     max-height: 25%;
     display: flex;
     flex-direction: column;
+    background: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+
+.player_config_header {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #333;
+}
+
+.player_config_actions {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
 }
 
 .player_config_title {
     font-size: 14px;
+    color: #e0e0e0;
 }
 
 .player_config_tab {
@@ -20,9 +36,9 @@
     align-items: center;
     justify-content: left;
     padding: 8px 0;
-    border-bottom: 1px solid #1a4a7a;
+    border-bottom: 1px solid #333;
     font-size: 11px;
-    color: #888;
+    color: #b0b0b0;
 }
 
 .player_config_team_div {
@@ -60,9 +76,15 @@
 
 .player_config_dropdown_button {
     border: none;
-    background: transparent;
+    background: #2a2a2a;
+    border-radius: 4px;
     cursor: pointer;
     display: flex;
     justify-content: right;
     flex-shrink: 0;
+    padding: 2px 6px;
+}
+
+.player_config_dropdown_button:hover {
+    background: #3a3a3a;
 }

@@ -19,7 +19,7 @@ export class BTUICH {
         this._onGrid.style.background = "";
     }
 
-    static setOnGrid(e: HTMLElement, onColor = "#ffff00"): void {
+    static setOnGrid(e: HTMLElement, onColor = "#38bdf8"): void {
         this.clearOnGrid();
         this._onGrid = e;
         e.style.background = onColor;
@@ -30,7 +30,7 @@ export class BTUICH {
         spanText = "",
         titleText = "",
         rF: () => void,
-        onColor = "#ffff00"
+        onColor = "#38bdf8"
     ): HTMLButtonElement {
         const b = document.createElement("button");
         b.className = "brush_options_table_grid_button";

@@ -7,33 +7,57 @@
 
 .map_config_div {
     margin-top: auto;
+    background: #1a1a1a;
+    border-top: 1px solid #333;
+    padding: 8px;
 }
 
 .map_config_information_div {
+    color: #b0b0b0;
+    font-size: 12px;
+    margin-bottom: 6px;
 }
 
 .map_config_button_div {
     display: flex;
+    gap: 4px;
 }
 
 .map_config_button_set_div {
     display: flex;
     max-width: 75%;
+    gap: 4px;
+    align-items: center;
 }
 
 .map_config_button_set_button {
     max-width: 50%;
     display: flex;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    color: #e0e0e0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.map_config_button_set_button:hover {
+    background: #3a3a3a;
+    border-color: #777;
 }
 
 .map_config_button_set_input_div {
     display: flex;
     max-width: 50%;
+    gap: 4px;
 }
 
 .map_config_button_set_input_input_div {
     display: flex;
     max-width: 50%;
+    align-items: center;
+    gap: 2px;
 }
 
 .map_config_button_set_input_input {

@@ -8,6 +8,10 @@
 body {
     display: flex;
     background: #121212;
+    color: #e0e0e0;
+    font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .l_tool {
@@ -15,12 +19,15 @@ body {
     width: 25vw;
     display: flex;
     flex-direction: column;
+    background: #1a1a1a;
+    border-right: 1px solid #333;
 }
 
 .map_editor {
     display: flex;
     height: 100vh;
     width: 75vw;
+    background: #121212;
 }
 
 .brush_range_options {
@@ -29,4 +36,41 @@ body {
     min-height: 48px;
     border-bottom: 1px solid #333;
     margin-top: auto;
+    background: #1a1a1a;
+}
+
+/* 统一按钮基础样式 */
+button {
+    background: #2a2a2a;
+    border: 1px solid #555;
+    color: #e0e0e0;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+button:hover {
+    background: #3a3a3a;
+    border-color: #777;
+}
+
+/* 统一输入框样式 */
+input {
+    background: #2a2a2a;
+    border: 1px solid #555;
+    color: #e0e0e0;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #38bdf8;
+}
+
+/* 左侧工具栏底部容器 */
+.l_tool_bottom {
+    margin-top: auto;
+    background: #1a1a1a;
 }

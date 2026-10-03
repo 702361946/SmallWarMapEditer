@@ -7,10 +7,10 @@
 
 import "./MapEditor.css";
 
-import {CellItem, Vector2, setHexMap, getHexMap} from "../MapSave";
+import {CellItem, getHexMap, setHexMap, Vector2} from "../MapSave";
 import {Brush} from "./Brush";
 import {URLS} from "../URLConfig";
-import {CELL_IMG_W, CELL_IMG_H, UNIT_IMG_SIZE, BEL_IMG_SIZE} from "../Config";
+import {BEL_IMG_SIZE, CELL_IMG_H, CELL_IMG_W, UNIT_IMG_SIZE} from "../Config";
 
 const svgNs = "http://www.w3.org/2000/svg";
 

@@ -13,11 +13,27 @@
     min-width: 50px;
     min-height: 25px;
     max-height: 50px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 4px;
+    gap: 4px;
 }
 
 .output_button_button {
     max-width: 100%;
     max-height: 100%;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    color: #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.output_button_button:hover {
+    background: #3a3a3a;
+    border-color: #777;
 }
 
 .output_button_span {
